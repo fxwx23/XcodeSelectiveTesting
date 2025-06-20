@@ -88,6 +88,7 @@ final class SelectiveTestingPackagesTests: XCTestCase {
                                     testTool.subtests]))
     }
 
+    #if os(macOS)
     func testBinaryTargetChange() async throws {
         // given
         let tool = try testTool.createSUT()
@@ -99,4 +100,5 @@ final class SelectiveTestingPackagesTests: XCTestCase {
         let result = try await tool.run()
         XCTAssertEqual(result, Set([testTool.binary]))
     }
+    #endif
 }

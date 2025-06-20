@@ -8,6 +8,7 @@ import SelectiveTestShell
 import Workspace
 import XCTest
 
+#if os(macOS)
 final class SelectiveTestingConfigTests: XCTestCase {
     let testTool = IntegrationTestTool()
 
@@ -149,7 +150,7 @@ final class SelectiveTestingConfigTests: XCTestCase {
         try testTool.validateTestPlan(testPlanPath: testTool.projectPath + "ExampleProject.xctestplan",
                                       expected: Set([]))
     }
-
+    
     func testPackageChangeInDifferentNamedPackage() async throws {
         // given
         let tool = try testTool.createSUT()
@@ -163,3 +164,4 @@ final class SelectiveTestingConfigTests: XCTestCase {
                                       expected: Set([testTool.subtests]))
     }
 }
+#endif
